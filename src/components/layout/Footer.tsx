@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FaPhoneVolume, FaWhatsapp, FaEnvelope, FaLocationDot, FaClock } from "react-icons/fa6";
 import { SITE, telLink, waLink, DEFAULT_WA_TEXT } from "@/data/site";
@@ -28,8 +29,7 @@ export default function Footer() {
       <div className="wrap">
         <div className="ftr-grid">
           <div className="ftr-brand">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={SITE.logo} alt={SITE.name} width={192} height={64} />
+            <Image src={SITE.logo} alt={SITE.name} width={192} height={64} sizes="192px" />
             <Slogan className="slogan-sm" />
             <p>{SITE.description}</p>
             <div style={{ display: "flex", gap: 10, marginTop: 20 }}>

@@ -8,12 +8,14 @@ import { Icon } from "@/components/ui/Icons";
 import { CtaBand, RouteMarquee } from "@/components/home/Sections";
 import { SERVICES } from "@/data/content";
 import { SITE, waLink } from "@/data/site";
+import { SERVICES_KEYWORDS } from "@/data/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Taxi Services",
+  title: "Local, Airport, One-Way, Outstation & Round Trip Taxi Bengaluru",
   description:
-    "Local taxi, one-way drop, round trip, outstation, tours, temple tours, airport and railway transfers across Tamil Nadu, Kerala, Karnataka and all over India.",
+    "Local taxi service in Bengaluru, Bengaluru airport taxi, one way drop taxi and outstation taxi from Bengaluru, plus round trip, tour, temple and railway transfers across Tamil Nadu, Kerala and Karnataka.",
   path: "/services",
+  keywords: SERVICES_KEYWORDS,
 });
 
 const servicesLd = {

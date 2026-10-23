@@ -1,5 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import VehicleArt from "@/components/ui/VehicleArt";
 import { inr } from "@/lib/fare";
@@ -60,8 +61,7 @@ export default function VehicleRow({ vehicles, value, onChange, name, roundTrip 
             <input type="radio" name={name} checked={value === v.id} onChange={() => onChange(v.id)} />
             <div>
               {v.image ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={cdn(`vehicle-icon/${v.image}`)} alt="" className="veh-img" loading="lazy" />
+                <Image src={cdn(`vehicle-icon/${v.image}`)} alt="" className="veh-img" width={240} height={112} sizes="120px" />
               ) : (
                 <VehicleArt shape={v.shape} color={v.color} taxi={false} />
               )}

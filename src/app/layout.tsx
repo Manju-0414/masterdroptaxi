@@ -6,27 +6,25 @@ import Footer from "@/components/layout/Footer";
 import FloatingUI from "@/components/layout/FloatingUI";
 import { SITE } from "@/data/site";
 import { CITIES, FOCUS_STATES } from "@/data/areas";
+import { HOME_KEYWORDS, HOME_SEO } from "@/data/seo";
 
 const outfit = Outfit({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-outfit", display: "swap" });
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-inter", display: "swap" });
 
-const DESCRIPTION =
-  "Cab service all over India — strongest in Tamil Nadu, Kerala and Karnataka. Book one-way drop, round trip, outstation, airport, tour and temple taxis from Bangalore, Attibele, Hosur, Chennai, Coimbatore, Kochi and more. Instant fare estimate. Call or WhatsApp +91 97871 11277.";
+const DESCRIPTION = HOME_SEO.description;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Master Drop Taxi — Cab Service in Tamil Nadu, Kerala & Karnataka",
+    default: HOME_SEO.title,
     template: "%s | Master Drop Taxi",
   },
   description: DESCRIPTION,
   applicationName: SITE.name,
   keywords: [
-    "cab service", "taxi service", "drop taxi", "one way taxi", "outstation cab", "cab service all over India", "interstate taxi",
-    "taxi service in Tamil Nadu", "taxi service in Kerala", "taxi service in Karnataka", "South India taxi",
-    "Taxi Service in Attibele", "Taxi Service in Bangalore", "Hosur Taxi", "Chennai drop taxi", "Coimbatore taxi", "Madurai taxi",
-    "Kochi taxi", "Munnar cab", "Mysore taxi", "Ooty taxi", "Tirupati taxi", "Bangalore to Ooty Taxi", "Bangalore to Chennai Taxi",
-    "Bangalore to Kochi Taxi", "Airport Taxi Bangalore", "Innova Crysta Taxi", "Temple Tours", "Kerala tour package cab",
+    ...HOME_KEYWORDS,
+    "cab service all over India", "taxi service in Tamil Nadu", "taxi service in Kerala", "taxi service in Karnataka",
+    "Taxi Service in Attibele", "Hosur Taxi", "Bangalore to Ooty Taxi", "Bangalore to Kochi Taxi", "Innova Crysta Taxi", "Temple Tours",
   ],
   category: "travel",
   alternates: { canonical: "/" },
@@ -36,10 +34,10 @@ export const metadata: Metadata = {
     locale: "en_IN",
     siteName: SITE.name,
     url: "/",
-    title: "Master Drop Taxi — Cab Service in Tamil Nadu, Kerala, Karnataka & All India",
+    title: HOME_SEO.title,
     description: DESCRIPTION,
   },
-  twitter: { card: "summary_large_image", title: "Master Drop Taxi — Outstation & Drop Taxi Across South India", description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: HOME_SEO.title, description: DESCRIPTION },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
   icons: { icon: "/icon.svg", apple: SITE.logo },

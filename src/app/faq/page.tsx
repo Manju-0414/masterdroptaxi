@@ -4,12 +4,14 @@ import PageHero from "@/components/ui/PageHero";
 import FaqList from "@/components/ui/FaqList";
 import { CtaBand } from "@/components/home/Sections";
 import { FAQS } from "@/data/content";
+import { FAQ_KEYWORDS } from "@/data/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "FAQ",
+  title: "Drop Taxi FAQ — Fares, Tolls, Safety & Booking",
   description:
-    "Answers about fares, tolls, waiting charges, luggage, pets, cancellations and bookings with Master Drop Taxi.",
+    "How much does a drop taxi cost per km? Is toll included? How to book online? Answers about fares, tolls, night travel, safety, luggage, pets and cancellations with Master Drop Taxi.",
   path: "/faq",
+  keywords: FAQ_KEYWORDS,
 });
 
 const faqLd = {

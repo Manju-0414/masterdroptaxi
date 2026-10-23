@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cdn } from "@/lib/cdn";
 
 export type HeroVariant = "outstation" | "city" | "tour" | "safety" | "family";
@@ -19,7 +20,7 @@ const CAR: Record<HeroVariant, { file: string; alt: string }> = {
   family: { file: "KIA-running.jpeg", alt: "KIA for family and group travel" },
 };
 
-export default function HeroScene({ variant }: { variant: HeroVariant }) {
+export default function HeroScene({ variant, priority = false }: { variant: HeroVariant; priority?: boolean }) {
   const car = CAR[variant];
   return (
     <div className="frame hero-photo" style={{ ["--glow" as string]: GLOW[variant] }}>
@@ -34,8 +35,15 @@ export default function HeroScene({ variant }: { variant: HeroVariant }) {
           ))}
         </g>
       </svg>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={cdn(car.file)} alt={car.alt} className="hero-car-img" />
+      <Image
+        src={cdn(car.file)}
+        alt={car.alt}
+        className="hero-car-img"
+        width={900}
+        height={560}
+        sizes="(max-width: 860px) 92vw, 560px"
+        priority={priority}
+      />
     </div>
   );
 }

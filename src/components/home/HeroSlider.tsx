@@ -9,6 +9,7 @@ import type { IconType } from "react-icons";
 import HeroScene, { type HeroVariant } from "./HeroScene";
 import Slogan from "@/components/ui/Slogan";
 import { SITE, STATS, telLink, waLink } from "@/data/site";
+import { HOME_SEO } from "@/data/seo";
 
 interface Slide {
   tag: string;
@@ -100,6 +101,19 @@ export default function HeroSlider() {
   useEffect(() => {
     setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }, []);
+
+  // Hold autoplay until the visitor first interacts: every slide change paints a new
+  // headline and car photo, and before any input each one counts as a fresh LCP.
+  const [armed, setArmed] = useState(false);
+  useEffect(() => {
+    const evts = ["pointermove", "pointerdown", "touchstart", "keydown", "scroll", "wheel"] as const;
+    const arm = () => {
+      setArmed(true);
+      evts.forEach((e) => window.removeEventListener(e, arm));
+    };
+    evts.forEach((e) => window.addEventListener(e, arm, { passive: true }));
+    return () => evts.forEach((e) => window.removeEventListener(e, arm));
+  }, []);
   // Slides advance when the active progress bar finishes, so hover-pause stays in sync.
   const onBarEnd = () => {
     if (!reduced) go(i + 1);
@@ -114,7 +128,7 @@ export default function HeroSlider() {
   ];
 
   return (
-    <section className="hero" id="top">
+    <section className={`hero ${armed ? "" : "hero-idle"}`} id="top">
       <div className="hero-bg" style={{ background: s.bg }}>
         {SITE.heroVideo && <video src={SITE.heroVideo} autoPlay muted loop playsInline />}
       </div>
@@ -123,14 +137,17 @@ export default function HeroSlider() {
       <div className="hero-blob" style={{ background: "#2f6b82", right: "-8%", top: "-10%", animationDelay: "-5s" }} />
 
       <div className="wrap hero-body">
+        <div className="hero-main">
+        {/* the one page H1 stays fixed for SEO; slide headlines rotate below it */}
+        <h1 className="hero-h1">{HOME_SEO.h1}</h1>
         <div className="hero-copy" key={`c${i}`}>
           <span className="hero-tag">
             <b>0{i + 1}</b> {s.tag}
           </span>
-          <h1>
+          <p className="hero-title">
             {s.pre}
             <span className="gl">{s.gold}</span>
-          </h1>
+          </p>
           <p className="hero-desc">{s.desc}</p>
           <div className="hero-cta">
             <a href={telLink} className="btn btn-teal">
@@ -145,10 +162,11 @@ export default function HeroSlider() {
           </div>
           <Slogan />
         </div>
+        </div>
 
         <div className="hero-art" key={`a${i}`}>
           <div className="scene">
-            <HeroScene variant={s.variant} />
+            <HeroScene variant={s.variant} priority={i === 0} />
           </div>
           {s.badges.map((b, k) => (
             <div key={k} className="fbadge" style={{ ...b.pos, ["--d" as string]: `${0.5 + k * 0.25}s` }}>

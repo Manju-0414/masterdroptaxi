@@ -5,12 +5,14 @@ import PageHero from "@/components/ui/PageHero";
 import Reveal from "@/components/ui/Reveal";
 import ContactForm from "./ContactForm";
 import { SITE, telLink, waLink, DEFAULT_WA_TEXT } from "@/data/site";
+import { CONTACT_KEYWORDS } from "@/data/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Contact Us",
+  title: "Contact Master Drop Taxi Service",
   description:
-    "Call or WhatsApp Master Drop Taxi on +91 97871 11277 for bookings, fare estimates and trip planning. Available 24/7.",
+    "Contact Master Drop Taxi Service in Bengaluru — call or WhatsApp +91 97871 11277 for airport, one-way and outstation cab bookings, fare estimates and trip planning. Available 24/7.",
   path: "/contact",
+  keywords: CONTACT_KEYWORDS,
 });
 
 export default function ContactPage() {

@@ -6,12 +6,14 @@ import Reveal from "@/components/ui/Reveal";
 import IllustratedScene from "@/components/ui/IllustratedScene";
 import { StatsBand, ComingSoonApp, CtaBand, WhyChoose } from "@/components/home/Sections";
 import { SAFETY } from "@/data/content";
+import { ABOUT_KEYWORDS } from "@/data/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "About Us",
+  title: "About Master Drop Taxi Bengaluru",
   description:
     "Master Drop Taxi — 15+ years of comfortable, reliable cab service for local, outstation, tour and pilgrimage trips across Tamil Nadu, Kerala, Karnataka and all over India.",
   path: "/about",
+  keywords: ABOUT_KEYWORDS,
 });
 
 export default function AboutPage() {

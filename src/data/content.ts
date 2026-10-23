@@ -1,3 +1,5 @@
+import { TARIFFS } from "./vehicles";
+
 export const SERVICES = [
   {
     id: "local",
@@ -91,16 +93,26 @@ export const APP_FEATURES = {
   driver: ["Online / Offline", "Accept / Reject Trips", "Navigation", "Trip Start / End", "Earnings", "Trip History"],
 };
 
+const { Mini, Sedan, SUV, "SUV Premium": SUVP } = TARIFFS;
+
 export const FAQS: { q: string; a: string }[] = [
+  { q: "Which is the best drop taxi in Tamil Nadu?", a: `Master Drop Taxi runs one-way drop taxis across Tamil Nadu, Kerala and Karnataka from ₹${Mini.oneWayRate}/km. You pay only for the distance you travel — no return fare — with clean AC cars, experienced highway drivers and 24/7 support on +91 97871 11277.` },
+  { q: "How much does a drop taxi cost per km?", a: `One-way drop fares are ₹${Mini.oneWayRate}/km for Mini (Swift, WagonR), ₹${Sedan.oneWayRate}/km for Sedan (Etios, Dzire), ₹${SUV.oneWayRate}/km for SUV (Ertiga, Innova) and ₹${SUVP.oneWayRate}/km for Innova Crysta, with a minimum of ${Mini.minKmOneWay} km plus driver allowance. Use the fare calculator for an instant estimate.` },
+  { q: "Is toll charge included in drop taxi fare?", a: "No. Tolls, parking and interstate permits are charged as applicable and shown separately from the estimate, so the base fare you see is exactly what you pay for the distance." },
+  { q: "Is a one way taxi safe for night travel?", a: "Yes. We run 24/7 with experienced drivers, and driver details are shared with you before the trip so you can share them with family. Night charges may apply for late-night travel — we tell you upfront." },
+  { q: "How do I book a drop taxi online?", a: "Enter your pickup, drop, date and vehicle in Get Estimate on our website and tap Book Now — or send the estimate on WhatsApp. Our team calls you to confirm the cab and shares driver details." },
+  { q: "What is the cheapest way to travel between cities in Tamil Nadu?", a: `A one-way drop taxi: you pay only one side, not the return trip. A Mini at ₹${Mini.oneWayRate}/km or Sedan at ₹${Sedan.oneWayRate}/km is the most budget-friendly, and an SUV works out cheaper per person for families and groups.` },
+  { q: "Do you provide airport pickup and drop in Bengaluru?", a: "Yes. We provide 24-hour pickup and drop at Kempegowda International Airport (BLR), plus one-way cabs to Chennai and other airports. Share your flight details so we can plan the pickup time." },
+  { q: "Can I book an urgent or midnight drop taxi?", a: "Yes. We are available 24/7 for emergency and late-night bookings — call or WhatsApp +91 97871 11277 and we will arrange the nearest available cab." },
+  { q: "Do you provide cabs for weddings and festival travel?", a: "Yes. We arrange sedans, SUVs and Innovas for marriage functions, festivals and family events, including multiple vehicles for one booking. Book early during festival season." },
+  { q: "Is your taxi service safe for women and families?", a: "Yes. Driver details are shared before the trip, you can share your trip with family, and our 24/7 support line is always reachable. Our professional drivers focus on on-time pickup and safe driving." },
   { q: "What types of taxi services do you provide?", a: "Local city taxi, one-way drop, round trip, outstation, multi-stop tours, temple tours, and airport and railway station transfers." },
   { q: "How can I get a fare estimate?", a: "Use the Get Estimate section on the home page, the fare calculator, or simply WhatsApp / call us with your pickup, drop, date and vehicle." },
   { q: "Can I book a round trip?", a: "Yes. Choose the Round Trip tab, add your return date and time, and we will estimate the round-trip distance and fare." },
   { q: "Can I add multiple stops?", a: "Yes. The Multi-Stop / Tour tab lets you add as many stops as you need, then either return to the start or end at a final destination." },
-  { q: "Are toll charges included?", a: "No. Tolls, parking and interstate permits are charged as applicable and are shown separately from the estimate." },
   { q: "Are waiting charges applicable?", a: "Yes, waiting charges apply according to the vehicle and trip policy. Short, reasonable halts during a trip are usually fine — ask us when booking." },
   { q: "Can I choose my vehicle?", a: "Yes. You can choose a Mini (Swift, WagonR, S-Presso), Sedan (Etios, Dzire, Amaze, Aura, Ciaz), SUV (Innova, Xylo, Ertiga, Rumion, Carens, Marazzo, Triber) or SUV Premium (Innova Crysta), subject to availability." },
-  { q: "Do you provide airport pickup?", a: "Yes, we provide airport pickup and drop. Share your flight details so we can plan the pickup time." },
-  { q: "Do you provide railway station pickup?", a: "Yes, railway station pickup and drop are available, including early morning and late-night trains." },
+    { q: "Do you provide railway station pickup?", a: "Yes, railway station pickup and drop are available, including early morning and late-night trains." },
   { q: "Can I travel with pets?", a: "Pets may be allowed subject to vehicle availability and driver acceptance. Please inform us before booking — see our Pet Travel Policy." },
   { q: "Can I carry large luggage?", a: "Luggage must fit within the selected vehicle's capacity. For extra luggage, choose an SUV or Innova — see our Luggage Policy." },
   { q: "Can I cancel my booking?", a: "Yes. Cancellation terms depend on how early you cancel — see our Cancellation Policy for details." },

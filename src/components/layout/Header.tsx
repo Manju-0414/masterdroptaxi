@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -32,8 +33,7 @@ export default function Header() {
       <header className={`hdr ${stuck ? "stuck" : ""}`}>
         <div className="hdr-in">
           <Link href="/" className="brand" aria-label={`${SITE.name} home`}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={SITE.logo} alt={SITE.name} width={126} height={42} />
+            <Image src={SITE.logo} alt={SITE.name} width={126} height={42} sizes="126px" priority />
           </Link>
           <nav className="nav" aria-label="Main">
             {NAV.map((n) => (
@@ -62,8 +62,7 @@ export default function Header() {
       <div className={`drawer ${open ? "open" : ""}`} aria-hidden={!open}>
         <div className="drawer-top">
           <span className="brand">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={SITE.logo} alt={SITE.name} width={126} height={42} />
+            <Image src={SITE.logo} alt={SITE.name} width={126} height={42} sizes="126px" />
           </span>
           <button className="icon-btn x-btn" aria-label="Close menu" onClick={() => setOpen(false)}>
             <FaXmark size={20} />

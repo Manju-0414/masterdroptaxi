@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import {
   FaUsers, FaSuitcase, FaSnowflake, FaCircleCheck, FaChevronLeft, FaChevronRight, FaArrowRight, FaCarSide, FaRotateLeft,
 } from "react-icons/fa6";
@@ -52,8 +53,15 @@ function FleetCard({
             <span className="fc-hill h2" />
             <span className="fc-road" />
             {v.fleetImage ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={cdn(`vechile-list/${v.fleetImage}`)} alt={v.name} className="fc-car fc-car-img" loading="lazy" draggable={false} />
+              <Image
+                src={cdn(`vechile-list/${v.fleetImage}`)}
+                alt={v.name}
+                className="fc-car fc-car-img"
+                width={600}
+                height={360}
+                sizes="300px"
+                draggable={false}
+              />
             ) : (
               <VehicleArt shape={v.shape} color={v.color} taxi={false} className="fc-car" />
             )}
